@@ -1,4 +1,4 @@
-# 🎥 YouTube Automático Leonardo AI
+# 🎥 YouTube Automático - IA's Gratuitas
 
 #### Vídeo: https://youtu.be/ZoJc8OJjS_s
 
