@@ -20,7 +20,7 @@ O tema da história é: O preço da validação feminina: por que muitos homens 
 A história deve seguir esta estrutura:  
 1. Introdução impactante que prenda a atenção do público.  
 2. Contexto que explique o problema principal.  
-3. Desenvolvimento em 1 a 2 seções, cada uma explorando um aspecto diferente do tema. Sem numeração e sem marcaçao do tipo 1. 2., etc
+3. Desenvolvimento em 80 a 90 seções, cada uma explorando um aspecto diferente do tema. Sem numeração e sem marcaçao do tipo 1. 2., etc
 4. Conclusão que resuma os pontos principais e inclua uma mensagem provocativa ou inspiradora.  
 
 Use uma linguagem reflexiva, mas acessível, e adicione exemplos ou dados relevantes para tornar a história mais envolvente.  
