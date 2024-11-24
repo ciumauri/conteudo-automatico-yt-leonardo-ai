@@ -24,38 +24,35 @@ Segundo o Los Angeles Times, anteriormente o maior roubo de dinheiro na cidade o
 
 ### TABELA TIPOS DE HISTÓRIA – Prompt
 
-Leia o artigo abaixo.
+Crie uma história detalhada e envolvente no estilo Red Pill.  
+O tema da história é: O preço da validação feminina: por que muitos homens perdem sua identidade?  
 
-Você é um repórter de notícias de tecnologia.
+A história deve seguir esta estrutura:  
+1. Introdução impactante que prenda a atenção do público.  
+2. Contexto que explique o problema principal.  
+3. Desenvolvimento em 1 a 2 seções, cada uma explorando um aspecto diferente do tema. Sem numeração e sem marcaçao do tipo 1. 2., etc
+4. Conclusão que resuma os pontos principais e inclua uma mensagem provocativa ou inspiradora.  
 
-Vamos criar uma revisão factual de 200 palavras do artigo.
-
-Vou enviar essa narração para um gerador de voz de IA que será usado sobre imagens.
-
-Primeiro, crie um título de 10 palavras.
-
-Segundo, crie uma introdução de uma única frase que atraia entusiastas de tecnologia.
-
-Depois, escreva uma frase explicando por que este artigo é importante.
-
-Em seguida, fale sobre os fatos do artigo.
-
-Finalize dizendo ao leitor para tomar uma ação para aproveitar as notícias compartilhadas no artigo.
+Use uma linguagem reflexiva, mas acessível, e adicione exemplos ou dados relevantes para tornar a história mais envolvente.  
+O texto deve ter entre 10.000 e 15.000 palavras para um vídeo de 12 a 15 minutos.
 
 ### TABELA TIPOS DE HISTÓRIA – Cenas Prompts JSON
 
-Eu tenho uma história para a qual preciso gerar prompts para geração de imagens com IA. Cada prompt deve ser projetado como uma ilustração dinâmica e vívida de quadrinhos. Os prompts devem incluir uma descrição geral, ações dos personagens, aparências dos personagens e o cenário/fundo, adaptados a cada sentença da história.
+Eu tenho uma história para a qual preciso gerar prompts para criação de imagens com IA. A história será dividida em 25 cenas, e cada cena deve ser ilustrada com 3 imagens detalhadas no estilo de quadrinhos, totalizando 75 imagens. Cada imagem deve capturar uma parte da narrativa, representando cerca de 10 segundos no vídeo.
 
-Por favor, formate os resultados como um objeto JSON contendo um array chamado "pairs". Cada objeto dentro do array deve ter duas chaves: "original", com a sentença original da história, e "aiImagePrompts", que contém um array de três strings. Cada string deve ser um prompt detalhado para gerar uma imagem no estilo de quadrinhos, focando no conteúdo narrativo da sentença correspondente.
+Por favor, formate os resultados como um objeto JSON contendo um array chamado "pairs". Cada objeto dentro do array deve conter:
 
-Diretrizes para os prompts:
+"scene": O número da cena (de 1 a 25).
+"original": A sentença ou parágrafo da história que corresponde à cena.
+"aiImagePrompts": Um array de três strings, onde cada string é um prompt detalhado para criar uma imagem da cena no estilo de quadrinhos.
+Diretrizes para os Prompts:
 
-Declaração de Estilo de Quadrinhos: Comece cada prompt com "Crie uma ilustração dinâmica e vívida de quadrinhos de..."
-Descrição dos Personagens e Ações: Descreva claramente os personagens e suas ações conforme retratados na cena.
-Cenário/Fundo: Inclua detalhes do ambiente ou fundo onde a ação ocorre.
-Humor e Tema: Reflita o humor e os elementos temáticos da sentença nos detalhes da ilustração.
-Elementos Visuais: Incorpore elementos visuais específicos que devem ser destacados, como tecnologia, emoções específicas ou características ambientais únicas.
-O objetivo é receber prompts criativos e envolventes que inspirem ilustrações detalhadas e vivas, encapsulando a essência da história através da lente da arte dos quadrinhos.
+Declaração de Estilo de Quadrinhos: Comece cada prompt com "Crie uma ilustração dinâmica e vívida de quadrinhos de...".
+Descrição dos Personagens e Ações: Descreva os personagens, suas ações e interações específicas na cena.
+Cenário/Fundo: Inclua detalhes sobre o ambiente ou fundo para reforçar o contexto da cena.
+Humor e Tema: Reflita o tom emocional e os temas da história em cada ilustração.
+Elementos Visuais: Destaque aspectos visuais específicos, como expressões, tecnologia, interações sociais ou símbolos relevantes.
+A ideia é criar prompts criativos e envolventes que capturem a essência de cada parte da história e proporcionem ilustrações detalhadas e ricas em narrativa.
 
 Aqui está a história que quero usar:
 
@@ -272,15 +269,19 @@ const mergedResults = prompts.map((prompt, index) => {
     const property = properties[index % properties.length];
     return {
         json: {
-            ...prompt.json,
-            width: property.json.width,
-            height: property.json.height,
-            modelId: property.json.modelId,
+            id: prompt.json.id,
+            "AI Image Prompts": prompt.json["AI Image Prompts"],
+            image_size: {
+                width: property.json.width,
+                height: property.json.height
+            },
+            modelId: property.json.modelId
         }
     };
 });
 
 return mergedResults;
+
 ```
 
 ### Filtrar ID linha + ID Geração
